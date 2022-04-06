@@ -15,8 +15,8 @@ Score ← {
     (2×m)+(nm∧+`nm)∊1+/(≠rw)>rw⊒rx
 }
 
-secret ← 5⊑words
-guess ←  9⊑words
+secret ← 7⊑words
+guess ←  "acbak"
 sc ← secret Score guess
 
 •Out "Secret: " ∾ secret
@@ -24,7 +24,13 @@ sc ← secret Score guess
 •Show sc
 
 WI ← ⊢
-IL ← ⊢
+IL ← {
+    s‿w ← 𝕨
+    nc ← s≠2
+    i ← w/˜s=0
+    m ← (∧´¬∘(i⊸∊˜nc⊸/))¨𝕩
+    m/𝕩
+}
 CL ← {
     s‿w ← 𝕨
     c ← s=2
