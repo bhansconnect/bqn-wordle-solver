@@ -10,11 +10,12 @@ words ← Load 5
 Score ← {
     m ← 𝕨=𝕩
     nm ← ¬m
-    r ← nm/𝕨
-    (2×m)+(≠r)>r⊒𝕩
+    rw ← nm/𝕨
+    rx ← nm/𝕩
+    (2×m)+(nm∧+`nm)∊1+/(≠rw)>rw⊒rx
 }
 
-secret ← "chsws"
+secret ← "shsws"
 guess ←  "swiss"
 
 •Out "Secret: " ∾ secret
