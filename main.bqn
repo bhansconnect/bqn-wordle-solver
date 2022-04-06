@@ -12,11 +12,11 @@ Score ← {
     nm ← ¬m
     rw ← nm/𝕨
     rx ← nm/𝕩
-    (2×m)+(nm∧+`nm)∊1+/(≠rw)>rw⊒rx
+    (2×m)+(nm∧+`nm)∊1+/rx(⊒˜<≠∘⊢)rw
 }
 
 secret ← 5⊑words
-guess ←  "abkgg"
+guess ←  "abkag"
 sc ← secret Score guess
 
 •Out "Secret: " ∾ secret
@@ -25,10 +25,11 @@ sc ← secret Score guess
 
 WI ← {
     s‿w ← 𝕨
-    nc ← s≠2
-    i ← w/˜s=1
-    m ← (∧´(i⊸∊˜nc⊸/))¨𝕩
-    m/𝕩
+    c ← w/˜s≠0
+    nc ← w/˜s=0
+    m ← (∧´c⊸(⊒˜<≠∘⊢))¨𝕩
+    nm ← (∨´nc⊸(⊒˜<≠∘⊢))¨𝕩
+    (m∧¬nm)/𝕩
 }
 IL ← {
     s‿w ← 𝕨
