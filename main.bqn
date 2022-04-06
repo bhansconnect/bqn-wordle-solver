@@ -10,7 +10,8 @@ words ← Load 5
 Score ← {
     m ← 𝕨=𝕩
     nm ← ¬m
-    (2×m) + nm×𝕩 ∊ nm/𝕨
+    r ← nm/𝕨
+    (2×m)+(≠r)>r⊒𝕩
 }
 
 secret ← "chsws"
