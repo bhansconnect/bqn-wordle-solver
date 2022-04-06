@@ -47,4 +47,12 @@ CL ← {
 
 Filter ← { 𝕨 WI 𝕨 IL 𝕨 CL 𝕩 }
 
-•Show sc‿guess Filter 10↑words
+•Show sc‿guess Filter words
+
+# This is brute force and super slow.
+BestGuess ← {
+    bg ← ⊑⍋+˝≠¨((<∘Score ∾ <∘⊢) Filter 𝕏)⌜˜𝕩
+    bg⊑𝕩
+}
+
+•Out "Word that leads to lowest average remaining words: " ∾ BestGuess 10↑words
