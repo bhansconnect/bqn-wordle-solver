@@ -16,7 +16,7 @@ Score ← {
 }
 
 secret ← 5⊑words
-guess ←  "abgka"
+guess ←  "abkgg"
 sc ← secret Score guess
 
 •Out "Secret: " ∾ secret
@@ -28,8 +28,10 @@ IL ← {
     s‿w ← 𝕨
     nc ← s≠2
     i ← w/˜s=1
+    ic ← s=1
+    nm ← (∨´(ic⊸×w⊸=))¨𝕩
     m ← (∧´(i⊸∊˜nc⊸/))¨𝕩
-    m/𝕩
+    (m∧¬nm)/𝕩
 }
 CL ← {
     s‿w ← 𝕨
