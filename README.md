@@ -1,4 +1,4 @@
 # BQN Wordle Solver
 A port of an APL wordle solver by  Rodrigo Girão Serrão to BQN
 
-First video in the series found here: https://www.youtube.com/watch?v=AziAgdVmOJo
+Full series: [here](https://www.youtube.com/playlist?list=PLgTqamKi1MS1x-XYJG8z-czwkDh0m8nN6)
