@@ -51,9 +51,27 @@ scg ← (1‿2‿0‿0‿0)‿("abcba")
 •Show scg Filter words
 
 # This is brute force and super slow.
+# 𝕨 is the current list of possible secret words.
+# 𝕩 is the list of all guessable words.
+# Sometimes guessing a word that isn't a possible secret
+# can narrow down the list better than just using the possible secrets
 BestGuess ← {
-    bg ← ⊑⍋+˝≠¨((<∘Score ∾ <∘⊢) Filter 𝕏)⌜˜𝕩
+    w ← 𝕨⊣𝕩
+    sc ← +˝≠¨w((<∘Score ∾ <∘⊢) Filter 𝕏)⌜𝕩
+    # •Show sc
+    bg ← ⊑⍋sc
     bg⊑𝕩
 }
 
-•Out "Word that leads to lowest average remaining words: " ∾ BestGuess 10↑words
+possible ← 5↑words
+all ← 10↑words
+•Out "Word that leads to lowest average remaining words: " ∾ possible BestGuess all
+
+# Actual test game/solving.
+secret ↩ (•rand.Range∘≠⊑⊢) words
+# •Out "Secret: " ∾ secret
+
+•Out "Starting real game"
+
+•Show secret Score "arose"
+•Show ≠(secret Score "arose")‿("arose") Filter words
