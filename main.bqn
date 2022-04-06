@@ -47,7 +47,8 @@ CL ← {
 
 Filter ← { 𝕨 WI 𝕨 IL 𝕨 CL 𝕩 }
 
-•Show sc‿guess Filter words
+scg ← (1‿2‿0‿0‿0)‿("abcba")
+•Show scg Filter words
 
 # This is brute force and super slow.
 BestGuess ← {
