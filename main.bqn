@@ -15,9 +15,23 @@ Score ← {
     (2×m)+(nm∧+`nm)∊1+/(≠rw)>rw⊒rx
 }
 
-secret ← "shsws"
-guess ←  "swiss"
+secret ← 5⊑words
+guess ←  9⊑words
+sc ← secret Score guess
 
 •Out "Secret: " ∾ secret
 •Out "Guess:  " ∾ guess
-•Show secret Score guess
+•Show sc
+
+WI ← ⊢
+IL ← ⊢
+CL ← {
+    s‿w ← 𝕨
+    c ← s=2
+    m ← ((c⊸≡c⊸×)w⊸=)¨𝕩
+    m/𝕩
+}
+
+Filter ← { 𝕨 WI 𝕨 IL 𝕨 CL 𝕩 }
+
+•Show sc‿guess Filter 10↑words
