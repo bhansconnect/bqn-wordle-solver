@@ -1,3 +1,5 @@
+#!/usr/bin/env bqn
+
 Load ← {
     ⊢/˜⟜(∾𝕩⊸=∘≢¨) •file.Lines 𝕨⊣"WORD.LST" 
 }
@@ -71,9 +73,11 @@ BestGuess ← {
 
 # Actual test game/solving.
 •Out "Starting real game minigame with 100 random words"
-all ← possible ← (⊢/˜(↕∊100⊸•rand.Subset)∘≠) words
+all ← (⊢/˜(↕∊100⊸•rand.Subset)∘≠) words
+# If wanted possible could be limited to match real wordle.
+possible ← all
 
-secret ← (•rand.Range∘≠⊑⊢) all
+secret ← (•rand.Range∘≠⊑⊢) possible
 # •Out "Secret: " ∾ secret
 
 chosen ← "     "
