@@ -4,8 +4,8 @@ Load ← {
 
 words ← Load 5
 
-•Show 10↑words
-•Show ≢words
+# •Show 10↑words
+# •Show ≢words
 
 Score ← {
     m ← 𝕨=𝕩
@@ -15,13 +15,13 @@ Score ← {
     (2×m)+(nm∧+`nm)∊1+/rx(⊒˜<≠∘⊢)rw
 }
 
-secret ← 0⊑words
-guess ←  9⊑words
-sc ← secret Score guess
+# secret ← 0⊑words
+# guess ←  9⊑words
+# sc ← secret Score guess
 
-•Out "Secret: " ∾ secret
-•Out "Guess:  " ∾ guess
-•Show sc
+# •Out "Secret: " ∾ secret
+# •Out "Guess:  " ∾ guess
+# •Show sc
 
 WI ← {
     s‿w ← 𝕨
@@ -47,8 +47,8 @@ CL ← {
 
 Filter ← { 𝕨 WI 𝕨 IL 𝕨 CL 𝕩 }
 
-scg ← (1‿2‿0‿0‿0)‿("abcba")
-•Show scg Filter words
+# scg ← (1‿2‿0‿0‿0)‿("abcba")
+# •Show scg Filter words
 
 # This is brute force and super slow.
 # 𝕨 is the current list of possible secret words.
@@ -57,21 +57,41 @@ scg ← (1‿2‿0‿0‿0)‿("abcba")
 # can narrow down the list better than just using the possible secrets
 BestGuess ← {
     w ← 𝕨⊣𝕩
-    sc ← +˝≠¨w((<∘Score ∾ <∘⊢) Filter 𝕏)⌜𝕩
+    # Preprocess 𝕩 to have 𝕨 at the beginning this will make it get selected first.
+    x ← w ∾ w(¬∘∊˜/⊢)𝕩
+    sc ← +˝≠¨w((<∘Score ∾ <∘⊢) Filter 𝕏)⌜x
     # •Show sc
     bg ← ⊑⍋sc
-    bg⊑𝕩
+    bg⊑x
 }
 
-possible ← 5↑words
-all ← 10↑words
-•Out "Word that leads to lowest average remaining words: " ∾ possible BestGuess all
+# possible ← 5↑words
+# all ← 10↑words
+# •Out "Word that leads to lowest average remaining words: " ∾ possible BestGuess all
 
 # Actual test game/solving.
-secret ↩ (•rand.Range∘≠⊑⊢) words
+•Out "Starting real game minigame with 100 random words"
+all ← possible ← (⊢/˜(↕∊40⊸•rand.Subset)∘≠) words
+
+secret ← (•rand.Range∘≠⊑⊢) all
 # •Out "Secret: " ∾ secret
 
-•Out "Starting real game"
+chosen ← "     "
+guesses ← 0
 
-•Show secret Score "arose"
-•Show ≠(secret Score "arose")‿("arose") Filter words
+While ← {𝕨{𝕊∘𝔾⍟𝔽𝕩}𝕩@}´
+While {𝕤⋄(secret≢chosen)∧guesses<6}‿{𝕤
+    •Out "Remaining possibile words:"
+    •Show possible
+    •Out "Chosen: " ∾ chosen ↩ possible BestGuess all
+    •Out "Score: " ∾ •Repr sc ← secret Score chosen
+    possible ↩ sc‿chosen Filter possible
+    guesses +↩ 1
+}
+
+{
+    secret≡chosen ?
+        •Out "Found secret word (" ∾ secret ∾ ") in " ∾ (•Repr guesses) ∾ " guesses!"
+    ;
+        •Out "Failed to figure out secret word. It was " ∾ secret
+}
