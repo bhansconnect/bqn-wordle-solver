@@ -71,7 +71,7 @@ BestGuess ← {
 
 # Actual test game/solving.
 •Out "Starting real game minigame with 100 random words"
-all ← possible ← (⊢/˜(↕∊40⊸•rand.Subset)∘≠) words
+all ← possible ← (⊢/˜(↕∊100⊸•rand.Subset)∘≠) words
 
 secret ← (•rand.Range∘≠⊑⊢) all
 # •Out "Secret: " ∾ secret
