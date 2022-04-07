@@ -72,7 +72,7 @@ BestGuess ← {
 # •Out "Word that leads to lowest average remaining words: " ∾ possible BestGuess all
 
 # Actual test game/solving.
-•Out "Starting real game minigame with 100 random words"
+•Out "Starting minigame and solving"
 all ← (⊢/˜(↕∊100⊸•rand.Subset)∘≠) words
 # If wanted possible could be limited to match real wordle.
 possible ← all
